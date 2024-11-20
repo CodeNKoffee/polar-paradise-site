@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Download, Github, Snowflake, Terminal, Heart } from 'lucide-react';
+import Confetti from 'react-confetti';
 import Image from 'next/image';
 import Link from 'next/link';
 import CodingInStyle from '../../public/codinginstyle.gif';
@@ -15,10 +16,17 @@ type SnowflakeStyle = {
 
 
 export default function PolarLanding() {
+  const [isClient, setIsClient] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [floatingHeight, setFloatingHeight] = useState(0);
   const [hoverText, setHoverText] = useState("Install Now!");
   const [snowflakes, setSnowflakes] = useState<SnowflakeStyle[]>([]);
+  const [showConfetti, setShowConfetti] = useState(false);
+
+  const handlePenguinClick = () => {
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 5000); // Show confetti for 5 seconds
+  };
 
   const currentYear = new Date().getFullYear();
   
@@ -31,19 +39,32 @@ export default function PolarLanding() {
   ];
 
   useEffect(() => {
+    setIsClient(true);
+
     const generateSnowflakes = () => {
-      return Array.from({ length: 50 }).map(() => ({
-        left: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 5}s`,
-        animationDuration: `${Math.random() * 3 + 2}s`,
+      return Array.from({ length: 50 }).map((_, index) => ({
+        left: `${(index * 2) % 100}%`, // Deterministic distribution
+        animationDelay: `${(index * 0.4) % 5}s`, // Consistent but spread out
+        animationDuration: `${2 + (index % 3)}s`, // Less random, more consistent
       }));
     };
 
     setSnowflakes(generateSnowflakes());
   }, []);
 
+  const handleMouseEnter = () => {
+    // Use a deterministic way to select hover text
+    const phraseIndex = snowflakes.length % hoverPhrases.length;
+    setHoverText(hoverPhrases[phraseIndex]);
+  };
+
+  // Render nothing on the server to prevent hydration mismatch
+  if (!isClient) {
+    return null;
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-100 overflow-hidden">
+    <div suppressHydrationWarning className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-100 overflow-hidden">
       {/* Snow effect */}
       <div className="fixed inset-0 pointer-events-none">
         {snowflakes.map((style, i) => (
@@ -60,7 +81,8 @@ export default function PolarLanding() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 pt-12 pb-4">
+      <div suppressHydrationWarning className="container mx-auto px-4 pt-12 pb-4">
+        {showConfetti && <Confetti />}
         {/* Hero Section */}
         <div className="text-center relative mb-24">
           {/* Bouncing Terminal Icon */}
@@ -69,11 +91,15 @@ export default function PolarLanding() {
             style={{ transform: `translateY(${floatingHeight}px)` }}
           >
             <Terminal className="w-24 h-24 mx-auto text-blue-600 mb-6" />
-            <div className="absolute -top-4 -right-4 animate-bounce mr-2">
+            <button
+              onClick={handlePenguinClick}
+              type="button"
+              className="absolute -top-4 -right-4 animate-bounce mr-2"
+            >
               <div className="bg-white rounded-full p-2 shadow-lg">
                 🐧
               </div>
-            </div>
+            </button>
           </div>
 
           <h1 className="text-6xl font-bold text-blue-900 mb-4 animate-pulse">
@@ -97,7 +123,7 @@ export default function PolarLanding() {
               href="https://marketplace.visualstudio.com/items?itemName=HatemSoliman.polar-paradise"
               target="_blank"
               className="bg-blue-600 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-blue-700 transition-all transform hover:scale-105 text-lg font-bold"
-              onMouseEnter={() => setHoverText(hoverPhrases[Math.floor(Math.random() * hoverPhrases.length)])}
+              onMouseEnter={handleMouseEnter}
             >
               <Download className="w-6 h-6" />
               Waddle Install
@@ -207,7 +233,7 @@ export default function PolarLanding() {
           </section>
 
           {/* Footer Fun */}
-          <footer className="text-center text-blue-700">
+          <footer suppressHydrationWarning className="text-center text-blue-700">
             <p className="text-lg mb-4">
               No penguins were harmed in the making of this theme 
               <br/>
@@ -218,7 +244,7 @@ export default function PolarLanding() {
               <br/>
               <span className="text-xs italic">*Not a real lab, just a very cold room</span>
             </p>
-            <p className="mt-16 text-sm">
+            <p suppressHydrationWarning className="mt-16 text-sm">
               <span className="text-xs italic">*For real:</span>
               <br/>
               Copyright &copy; {currentYear} Hatem Soliman and the Polar Paradise documentation authors.
