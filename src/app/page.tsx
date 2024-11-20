@@ -4,12 +4,23 @@ import { useState, useEffect } from 'react';
 import { Download, Github, Snowflake, Terminal, Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import CodingInStyle from '../assets/code-fun.png';
-import DebuggingInStyle from '../assets/dan-shiffman-coding.gif';
+import CodingInStyle from '../../public/code-fun.png';
+import DebuggingInStyle from '../../public/dan-shiffman-coding.gif';
+
+type SnowflakeStyle = {
+  left: string;
+  animationDelay: string;
+  animationDuration: string;
+};
+
 
 export default function PolarLanding() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [floatingHeight, setFloatingHeight] = useState(0);
   const [hoverText, setHoverText] = useState("Install Now!");
+  const [snowflakes, setSnowflakes] = useState<SnowflakeStyle[]>([]);
+
+  const currentYear = new Date().getFullYear();
   
   const hoverPhrases = [
     "Cool choice! 🧊",
@@ -20,25 +31,28 @@ export default function PolarLanding() {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFloatingHeight(prev => (prev === 0 ? -10 : 0));
-    }, 1500);
-    return () => clearInterval(interval);
+    const generateSnowflakes = () => {
+      return Array.from({ length: 50 }).map(() => ({
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 5}s`,
+        animationDuration: `${Math.random() * 3 + 2}s`,
+      }));
+    };
+
+    setSnowflakes(generateSnowflakes());
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-100 overflow-hidden">
       {/* Snow effect */}
       <div className="fixed inset-0 pointer-events-none">
-        {[...Array(50)].map((_, i) => (
+        {snowflakes.map((style, i) => (
           <div
             key={i}
             className="absolute animate-fall"
             style={{
-              left: `${Math.random() * 100}%`,
+              ...style,
               top: `-20px`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${Math.random() * 3 + 2}s`
             }}
           >
             <Snowflake className="text-white w-3 h-3" />
@@ -104,7 +118,7 @@ export default function PolarLanding() {
                 alt="Coding Penguin"
                 width={400}
                 height={300}
-                className="w-full rounded-2xl shadow-lg transform transition-transform group-hover:scale-105"
+                className="w-full h-[300px] object-cover rounded-2xl shadow-lg transform transition-transform group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                 <p className="text-white text-lg">When the code compiles on first try 🎉</p>
@@ -116,7 +130,7 @@ export default function PolarLanding() {
                 alt="Debug Dance"
                 width={400}
                 height={300}
-                className="w-full rounded-2xl shadow-lg transform transition-transform group-hover:scale-105"
+                className="w-full h-[300px] object-cover rounded-2xl shadow-lg transform transition-transform group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                 <p className="text-white text-lg">Me debugging with style 🕺</p>
@@ -170,6 +184,11 @@ export default function PolarLanding() {
               Copyright © 2024 Arctic Code Labs*
               <br/>
               <span className="text-xs italic">*Not a real lab, just a very cold room</span>
+            </p>
+            <p className="mt-16 text-sm">
+              <span className="text-xs italic">*For real:</span>
+              <br/>
+              Copyright &copy; {currentYear} Hatem Soliman and the Polar Paradise documentation authors.
             </p>
           </footer>
         </div>
