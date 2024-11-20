@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Download, Github, Snowflake, Terminal, Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import CodingInStyle from '../../public/code-fun.png';
+import CodingInStyle from '../../public/codinginstyle.gif';
 import DebuggingInStyle from '../../public/dan-shiffman-coding.gif';
 
 type SnowflakeStyle = {
