@@ -63,6 +63,15 @@ export default function PolarLanding() {
     return null;
   }
 
+  const handleStarClick = () => {
+    // Redirect to GitHub's star page directly
+    const repoUrl = 'https://github.com/CodeNKoffee/polar-paradise-vscode-theme';
+    const githubStarUrl = `${repoUrl}/stargazers`;
+    
+    // Open GitHub star page in a new tab
+    window.open(githubStarUrl, '_blank');
+  };
+
   return (
     <div suppressHydrationWarning className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-100 overflow-hidden">
       {/* Snow effect */}
@@ -121,6 +130,7 @@ export default function PolarLanding() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
             <Link
               href="https://marketplace.visualstudio.com/items?itemName=HatemSoliman.polar-paradise"
+              onClick={handleStarClick}
               target="_blank"
               className="bg-blue-600 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-blue-700 transition-all transform hover:scale-105 text-lg font-bold"
               onMouseEnter={handleMouseEnter}
