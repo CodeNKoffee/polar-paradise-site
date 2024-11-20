@@ -95,6 +95,7 @@ export default function PolarLanding() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
             <Link
               href="https://marketplace.visualstudio.com/items?itemName=HatemSoliman.polar-paradise"
+              target="_blank"
               className="bg-blue-600 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-blue-700 transition-all transform hover:scale-105 text-lg font-bold"
               onMouseEnter={() => setHoverText(hoverPhrases[Math.floor(Math.random() * hoverPhrases.length)])}
             >
@@ -102,7 +103,8 @@ export default function PolarLanding() {
               Waddle Install
             </Link>
             <Link 
-              href="https://github.com/CodeNKoffee/polar-paradise-vscode-theme" 
+              href="https://github.com/CodeNKoffee/polar-paradise-vscode-theme"
+              target="_blank"
               className="bg-gray-800 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-gray-900 transition-all transform hover:scale-105 text-lg font-bold"
             >
               <Github className="w-6 h-6" />
