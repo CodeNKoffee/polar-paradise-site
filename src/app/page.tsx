@@ -112,6 +112,18 @@ export default function PolarLanding() {
             </Link>
           </div>
 
+          {/* Trailer Promo */}
+          <section>
+            <h2>Promo Launch Trailer</h2>
+            <iframe 
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/embed/x1vbV76fbok?si=lwrmcTsmJ3DRTIey" 
+              title="YouTube video player" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            />
+          </section>
+
           {/* Fun GIF Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="relative group">

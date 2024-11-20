@@ -7,6 +7,46 @@
   --foreground: #171717;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+section {
+  width: 100%;
+  margin: 144px 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.kontainer {
+  width: 100%;
+  max-width: 1200px;
+  padding: 12px 0;
+  margin: 0 auto; /* Ensure it centers in the middle */
+}
+
+.row {
+  width: 86%;
+  margin: 0 auto;
+  padding: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
