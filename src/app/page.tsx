@@ -120,7 +120,7 @@ export default function PolarLanding() {
                 <iframe 
                   width="560" 
                   height="315" 
-                  className="rounded-2xl border-8 border-yellow-[#FF9B50]"
+                  className="radiating-border"
                   src="https://www.youtube.com/embed/x1vbV76fbok?si=lwrmcTsmJ3DRTIey" 
                   title="YouTube video player" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -194,7 +194,7 @@ export default function PolarLanding() {
                 <Link
                   href="https://paypal.me/h4temsoliman?country.x=EG&locale.x=en_US"
                   target="_blank"
-                  className="inline-block bg-white/80 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg animate-pulse cursor-pointer transition-transform duration-300 ease hover:scale-105"
+                  className="inline-block bg-white/80 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg animate-pulsePP cursor-pointer transition-transform duration-300 ease hover:scale-105"
                 >
                   <p className="text-blue-900 flex items-center justify-center gap-2">
                     Crafted with <Heart className="w-5 h-5 text-red-500 animate-pulse" /> by
