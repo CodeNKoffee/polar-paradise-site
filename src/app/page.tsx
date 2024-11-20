@@ -69,7 +69,7 @@ export default function PolarLanding() {
             style={{ transform: `translateY(${floatingHeight}px)` }}
           >
             <Terminal className="w-24 h-24 mx-auto text-blue-600 mb-6" />
-            <div className="absolute -top-4 -right-4 animate-bounce">
+            <div className="absolute -top-4 -right-4 animate-bounce mr-2">
               <div className="bg-white rounded-full p-2 shadow-lg">
                 🐧
               </div>
