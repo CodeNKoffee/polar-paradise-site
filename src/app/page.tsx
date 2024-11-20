@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import { Download, Github, Snowflake, Terminal, Heart } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import CodingInStyle from '../assets/code-fun.png';
+import DebuggingInStyle from '../assets/dan-shiffman-coding.gif';
 
 export default function PolarLanding() {
   const [floatingHeight, setFloatingHeight] = useState(0);
@@ -76,24 +79,28 @@ export default function PolarLanding() {
 
           {/* CTA Buttons */}
           <div className="flex justify-center gap-4 mb-16">
-            <button 
+            <Link
+              href="https://marketplace.visualstudio.com/items?itemName=HatemSoliman.polar-paradise"
               className="bg-blue-600 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-blue-700 transition-all transform hover:scale-105 text-lg font-bold"
               onMouseEnter={() => setHoverText(hoverPhrases[Math.floor(Math.random() * hoverPhrases.length)])}
             >
               <Download className="w-6 h-6" />
               Waddle Install
-            </button>
-            <button className="bg-gray-800 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-gray-900 transition-all transform hover:scale-105 text-lg font-bold">
+            </Link>
+            <Link 
+              href="https://github.com/CodeNKoffee/polar-paradise-vscode-theme" 
+              className="bg-gray-800 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-gray-900 transition-all transform hover:scale-105 text-lg font-bold"
+            >
               <Github className="w-6 h-6" />
               Star on GitHub
-            </button>
+            </Link>
           </div>
 
           {/* Fun GIF Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="relative group">
               <Image 
-                src="/api/placeholder/400/300" 
+                src={CodingInStyle}
                 alt="Coding Penguin"
                 width={400}
                 height={300}
@@ -105,7 +112,7 @@ export default function PolarLanding() {
             </div>
             <div className="relative group">
               <Image 
-                src="/api/placeholder/400/300" 
+                src={DebuggingInStyle}
                 alt="Debug Dance"
                 width={400}
                 height={300}
