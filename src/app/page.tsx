@@ -92,7 +92,7 @@ export default function PolarLanding() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex justify-center gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
             <Link
               href="https://marketplace.visualstudio.com/items?itemName=HatemSoliman.polar-paradise"
               className="bg-blue-600 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-blue-700 transition-all transform hover:scale-105 text-lg font-bold"
