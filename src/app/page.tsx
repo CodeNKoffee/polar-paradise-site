@@ -114,78 +114,94 @@ export default function PolarLanding() {
 
           {/* Trailer Promo */}
           <section>
-            <h2>Promo Launch Trailer</h2>
-            <iframe 
-              width="560" 
-              height="315" 
-              src="https://www.youtube.com/embed/x1vbV76fbok?si=lwrmcTsmJ3DRTIey" 
-              title="YouTube video player" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            />
+            <div className="kontainer">
+              <div className="row">
+                <h2>Promo Launch Trailer</h2>
+                <iframe 
+                  width="560" 
+                  height="315" 
+                  src="https://www.youtube.com/embed/x1vbV76fbok?si=lwrmcTsmJ3DRTIey" 
+                  title="YouTube video player" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                />
+              </div>
+            </div>
           </section>
 
           {/* Fun GIF Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="relative group">
-              <Image 
-                src={CodingInStyle}
-                alt="Coding Penguin"
-                width={400}
-                height={300}
-                className="w-full h-[300px] object-cover rounded-2xl shadow-lg transform transition-transform group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                <p className="text-white text-lg">When the code compiles on first try 🎉</p>
+          <section>
+            <div className="kontainer">
+              <div className="row grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div className="relative group">
+                  <Image 
+                    src={CodingInStyle}
+                    alt="Coding Penguin"
+                    width={400}
+                    height={300}
+                    className="w-full h-[300px] object-cover rounded-2xl shadow-lg transform transition-transform group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <p className="text-white text-lg">When the code compiles on first try 🎉</p>
+                  </div>
+                </div>
+                <div className="relative group">
+                  <Image 
+                    src={DebuggingInStyle}
+                    alt="Debug Dance"
+                    width={400}
+                    height={300}
+                    className="w-full h-[300px] object-cover rounded-2xl shadow-lg transform transition-transform group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <p className="text-white text-lg">Me debugging with style 🕺</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="relative group">
-              <Image 
-                src={DebuggingInStyle}
-                alt="Debug Dance"
-                width={400}
-                height={300}
-                className="w-full h-[300px] object-cover rounded-2xl shadow-lg transform transition-transform group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                <p className="text-white text-lg">Me debugging with style 🕺</p>
-              </div>
-            </div>
-          </div>
+          </section>
 
           {/* Fun Features List */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 mb-16 transform hover:scale-105 transition-transform">
-            <h2 className="text-3xl font-bold text-blue-900 mb-6">Why It&apos;s Ice Cold! 🧊</h2>
-            <ul className="text-left text-lg text-blue-700 space-y-4">
-              <li className="flex items-center gap-2">
-                <span className="text-2xl">🎨</span> Colors so cool, your CPU temp drops 5 degrees
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-2xl">👀</span> Easy on the eyes (tested by actual snowmen)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-2xl">🧠</span> Makes your code 200% cooler (scientific fact*)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-2xl">🐟</span> Free virtual fish with every install!
-              </li>
-              <li className="text-sm italic text-blue-500">
-                * Results may vary based on your penguin&apos;s coding experience
-              </li>
-            </ul>
-          </div>
+          <section>
+            <div className="kontainer">
+              <div className="row bg-white/80 backdrop-blur-sm rounded-3xl p-8 mb-16 transform hover:scale-105 transition-transform flex flex-col">
+                <h2 className="text-3xl font-bold text-blue-900 mt-8 mb-6">Why It&apos;s Ice Cold! 🧊</h2>
+                <ul className="text-left text-lg text-blue-700 space-y-4 mb-8">
+                  <li className="flex items-center gap-2">
+                    <span className="text-2xl">🎨</span> Colors so cool, your CPU temp drops 5 degrees
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-2xl">👀</span> Easy on the eyes (tested by actual snowmen)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-2xl">🧠</span> Makes your code 200% cooler (scientific fact*)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-2xl">🐟</span> Free virtual fish with every install!
+                  </li>
+                  <li className="text-sm italic text-blue-500">
+                    * Results may vary based on your penguin&apos;s coding experience
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
           {/* Creator Section */}
-          <div className="text-center mb-16">
-            <div className="inline-block bg-white/80 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg">
-              <p className="text-blue-900 flex items-center justify-center gap-2">
-                Crafted with <Heart className="w-5 h-5 text-red-500 animate-pulse" /> by
-                <span className="font-bold">Hatem Soliman</span>
-              </p>
-              <p className="text-blue-700 text-sm mt-2">
-                (A developer who really needs to chill)
-              </p>
+          <section>
+            <div className="kontainer">
+              <div className="text-center">
+                <div className="inline-block bg-white/80 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg">
+                  <p className="text-blue-900 flex items-center justify-center gap-2">
+                    Crafted with <Heart className="w-5 h-5 text-red-500 animate-pulse" /> by
+                    <span className="font-bold">Hatem Soliman</span>
+                  </p>
+                  <p className="text-blue-700 text-sm mt-2">
+                    (A developer who really needs to chill)
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
 
           {/* Footer Fun */}
           <footer className="text-center text-blue-700">
