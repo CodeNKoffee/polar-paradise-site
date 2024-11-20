@@ -60,7 +60,7 @@ export default function PolarLanding() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 pt-12 pb-4">
         {/* Hero Section */}
         <div className="text-center relative mb-24">
           {/* Bouncing Terminal Icon */}
@@ -116,11 +116,9 @@ export default function PolarLanding() {
           <section>
             <div className="kontainer">
               <div className="row flex-col gap-4">
-                <h2 className="text-blue-900 text-3xl font-extrabold">Promo Launch Trailer</h2>
+                <h2 className="text-blue-900 text-xl sm:text-3xl font-extrabold">Promo Launch Trailer</h2>
                 <iframe 
-                  width="560" 
-                  height="315" 
-                  className="radiating-border"
+                  className="w-full max-w-[560px] h-[215px] sm:h-[315px]  radiating-border"
                   src="https://www.youtube.com/embed/x1vbV76fbok?si=lwrmcTsmJ3DRTIey" 
                   title="YouTube video player" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -132,7 +130,7 @@ export default function PolarLanding() {
           {/* Fun GIF Section */}
           <section>
             <div className="kontainer">
-              <div className="row grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              <div className="row flex flex-col md:grid md:grid-cols-2 gap-8 mb-16">
                 <div className="relative group">
                   <Image 
                     src={CodingInStyle}
