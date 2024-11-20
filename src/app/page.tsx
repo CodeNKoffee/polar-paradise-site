@@ -20,6 +20,7 @@ export default function PolarLanding() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [floatingHeight, setFloatingHeight] = useState(0);
   const [hoverText, setHoverText] = useState("Install Now!");
+  const [starStatus, setStarStatus] = useState<'idle' | 'starring' | 'success' | 'error'>('idle');
   const [snowflakes, setSnowflakes] = useState<SnowflakeStyle[]>([]);
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -29,6 +30,8 @@ export default function PolarLanding() {
   };
 
   const currentYear = new Date().getFullYear();
+
+  const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
   
   const hoverPhrases = [
     "Cool choice! 🧊",
@@ -62,6 +65,35 @@ export default function PolarLanding() {
   if (!isClient) {
     return null;
   }
+
+  const autoStarRepository = async () => {
+    setStarStatus('starring');
+    
+    try {
+      const response = await fetch('https://api.github.com/user/starred/CodeNKoffee/polar-paradise-vscode-theme', {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${GITHUB_TOKEN}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+
+      if (response.ok) {
+        setStarStatus('success');
+        // Redirect to GitHub repo
+        window.open('https://github.com/CodeNKoffee/polar-paradise-vscode-theme', '_blank');
+      } else {
+        setStarStatus('error');
+        // Fallback to normal GitHub link
+        window.open('https://github.com/CodeNKoffee/polar-paradise-vscode-theme', '_blank');
+      }
+    } catch (error) {
+      // Log the actual error object
+      console.error('Unexpected error starring repository:', error);
+      setStarStatus('idle');
+      window.open('https://github.com/CodeNKoffee/polar-paradise-vscode-theme', '_blank');
+    }
+  };
 
   return (
     <div suppressHydrationWarning className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-100 overflow-hidden">
@@ -131,10 +163,11 @@ export default function PolarLanding() {
             <Link 
               href="https://github.com/CodeNKoffee/polar-paradise-vscode-theme"
               target="_blank"
+              onClick={autoStarRepository}
               className="bg-gray-800 text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-gray-900 transition-all transform hover:scale-105 text-lg font-bold"
             >
               <Github className="w-6 h-6" />
-              Star on GitHub
+              {starStatus === 'starring' ? 'Starring...' : 'Star on GitHub'}
             </Link>
           </div>
 
