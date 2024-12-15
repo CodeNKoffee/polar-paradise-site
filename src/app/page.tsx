@@ -272,7 +272,7 @@ export default function PolarLanding() {
               <br/>
               Copyright &copy; {currentYear} Hatem Soliman and the Polar Paradise documentation authors.
             </p>
-            <ul className="bg-white rounded-2xl mt-16 p-8 flex flex-col sm:flex-row gap-8 sm:gap-24">
+            <ul className="bg-white text-center rounded-2xl mt-16 p-8 flex flex-col sm:flex-row gap-8 sm:gap-24">
               {footerLinks.map((section, index) => (
                 <li key={index} className="flex flex-col">
                   <h4 className="text-left text-blue-900 text-xl font-semibold mb-4">{section.title}</h4>
