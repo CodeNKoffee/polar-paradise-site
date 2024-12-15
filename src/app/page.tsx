@@ -7,13 +7,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import CodingInStyle from '../../public/codinginstyle.gif';
 import DebuggingInStyle from '../../public/dan-shiffman-coding.gif';
+import { footerLinks, hoverPhrases } from '../../constants';
+import { SnowflakeStyle } from '../../types';
 
-type SnowflakeStyle = {
-  left: string;
-  animationDelay: string;
-  animationDuration: string;
-};
-
+const isExternal = (url: string) => /^https?:\/\//.test(url);
+const isAnchorLink = (url: string) => /^#/.test(url);
 
 export default function PolarLanding() {
   const [isClient, setIsClient] = useState(false);
@@ -32,14 +30,6 @@ export default function PolarLanding() {
   const currentYear = new Date().getFullYear();
 
   const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
-  
-  const hoverPhrases = [
-    "Cool choice! 🧊",
-    "Ice to meet you! ❄️",
-    "Waddle you waiting for? 🐧",
-    "Snow much better! ⛄",
-    "CODE-l weather we're having! 🌨️"
-  ];
 
   useEffect(() => {
     setIsClient(true);
@@ -266,7 +256,7 @@ export default function PolarLanding() {
           </section>
 
           {/* Footer Fun */}
-          <footer suppressHydrationWarning className="text-center text-blue-700">
+          <footer suppressHydrationWarning className="text-center text-blue-700 flex flex-col items-center">
             <p className="text-lg mb-4">
               No penguins were harmed in the making of this theme 
               <br/>
@@ -282,6 +272,27 @@ export default function PolarLanding() {
               <br/>
               Copyright &copy; {currentYear} Hatem Soliman and the Polar Paradise documentation authors.
             </p>
+            <ul className="bg-white rounded-2xl mt-16 p-8 flex flex-col sm:flex-row gap-8 sm:gap-24">
+              {footerLinks.map((section, index) => (
+                <li key={index} className="flex flex-col">
+                  <h4 className="text-left text-blue-900 text-xl font-semibold mb-4">{section.title}</h4>
+                  <ul className="text-left flex flex-col gap-2 items-center justify-start">
+                    {section.links.map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        <Link
+                          href={isAnchorLink(link.href) ? `/${link.href}` : link.href}
+                          className="block hover:underline text-blue-500"
+                          target={isExternal(link.href) ? "_blank" : "_self"}
+                          rel={isExternal(link.href) ? "noopener noreferrer" : undefined}
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
           </footer>
         </div>
       </div>
